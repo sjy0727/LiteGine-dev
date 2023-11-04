@@ -14,5 +14,5 @@ cmake-build-debug/
 # sourcetrail project
 sourcetrail/
 
-#  OpenGL
-OpenGL/
+#.idea
+.idea/
