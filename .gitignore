@@ -1,0 +1,15 @@
+# Xmake cache
+.xmake/
+build/
+
+# vscode cache
+.cache
+
+# MacOS Cache
+.DS_Store
+
+# sourcetrail project
+sourcetrail/
+
+#  OpenGL
+OpenGL/

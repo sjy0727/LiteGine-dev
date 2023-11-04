@@ -1,0 +1,23 @@
+# ninja log v5
+10	868	1699104146826747591	CMakeFiles/Glad.dir/Hazel/vendor/Glad/src/glad.c.o	92a072d2673a1148
+26	1279	1699108539897955143	CMakeFiles/Hazel.dir/Hazel/src/Platform/MacOS/MacInput.cpp.o	2935ba151659905b
+22	2267	1699108369757189770	CMakeFiles/Hazel.dir/Hazel/src/Hazel/Application.cpp.o	5c121d30e010cb4a
+5048	6456	1699104152414759243	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/imgui_demo.cpp.o	a2d3ee3aa5ac2925
+0	18	0	clean	3c8e6cc385ee00ba
+3431	4265	1699104150225517431	CMakeFiles/Hazel.dir/Hazel/src/Hazel/Layer.cpp.o	2b75d07991ac60b5
+5254	8227	1699104154190843437	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/imgui_draw.cpp.o	8483073ea2647223
+11	2694	1699104148655203535	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/imgui_widgets.cpp.o	3a8d4db0a8a1e069
+10	1010	1699104146956114487	CMakeFiles/Hazel.dir/cmake_pch_arm64.hxx.pch	1cfd1d10cb15c304
+11	1480	1699104147441576018	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/ImGuizmo.cpp.o	648288ce8af104b1
+1010	1771	1699104147729673478	CMakeFiles/Hazel.dir/Hazel/src/hzpch.cpp.o	fad035ee70130f98
+21	2536	1699108173346061167	CMakeFiles/Hazel.dir/Hazel/src/Platform/MacOS/MacWindow.cpp.o	b7841d9ece321355
+11	6480	1699104152435577978	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/imgui.cpp.o	4cefcaacf5a68963
+2507	7253	1699104153211375941	CMakeFiles/Hazel.dir/Hazel/src/Hazel/Log.cpp.o	8931434d2adca3e2
+913	1772	1699104147731984199	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/imgui_tables.cpp.o	53bfea24ecf04d8a
+11	4990	1699104150945540270	CMakeFiles/ImGui.dir/Hazel/vendor/ImGui/include/ImGui/TextEditor.cpp.o	88d4e3ef028378e7
+4266	5254	1699104151217131231	CMakeFiles/Hazel.dir/Hazel/src/Hazel/LayerStack.cpp.o	6f59443999253613
+21	1206	1699108172013025697	CMakeFiles/Hazel.dir/Hazel/src/Hazel/Window.cpp.o	477a39ae8b23cba5
+22	2714	1699108173526036911	CMakeFiles/LiteGine.dir/Sandbox/src/SandboxApp.cpp.o	a73d5c71d6ab5dd3
+1771	3154	1699104149113494579	CMakeFiles/Hazel.dir/Hazel/src/Platform/ImGuiBackend/imgui_impl_glfw.cpp.o	3151a6180420b207
+1480	2506	1699104148468025459	CMakeFiles/Hazel.dir/Hazel/src/Platform/ImGuiBackend/imgui_impl_opengl3.cpp.o	a097430f3180bf27
+21	2540	1699108370030455699	CMakeFiles/Hazel.dir/Hazel/src/Hazel/ImGui/ImGuiLayer.cpp.o	cbd69f2cf87d6cf9

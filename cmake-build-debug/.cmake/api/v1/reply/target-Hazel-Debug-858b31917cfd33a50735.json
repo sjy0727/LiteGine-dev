@@ -1,0 +1,524 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/build/macosx/arm64/release/libHazel.dylib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_options",
+			"target_link_directories",
+			"target_link_libraries",
+			"add_dependencies",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories",
+			"target_precompile_headers",
+			"target_compile_features",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 108,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 104,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 93,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 57,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 78,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 87,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 70,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 61,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 58,
+				"parent" : 0
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 83,
+				"parent" : 0
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 111,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -fPIC -fcolor-diagnostics"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-DNDEBUG"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-O3"
+				},
+				{
+					"fragment" : "-Winvalid-pch -Xclang -emit-pch -Xclang -include -Xclang /Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/Hazel.dir/cmake_pch_arm64.hxx -x c++-header"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 8,
+					"define" : "GLFW_INCLUDE_NONE"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "GL_SILENCE_DEPRECATION"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "HZ_BUILD_SHARED_LIB"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "HZ_ENABLE_ASSERTS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "HZ_PLATFORM"
+				},
+				{
+					"define" : "Hazel_EXPORTS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "_GLFW_COCOA"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/spdlog/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/chernoGLFW"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/ImGui/include/ImGui"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/src"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/src/Hazel"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/ImGui/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/Glad/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					11
+				],
+				"standard" : "11"
+			},
+			"precompileHeaders" : 
+			[
+				{
+					"backtrace" : 10,
+					"header" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/src/hzpch.h"
+				}
+			],
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -fPIC -fcolor-diagnostics"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-DNDEBUG"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-O3"
+				},
+				{
+					"fragment" : "-Winvalid-pch -Xarch_arm64 -include/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/Hazel.dir/cmake_pch_arm64.hxx"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 8,
+					"define" : "GLFW_INCLUDE_NONE"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "GL_SILENCE_DEPRECATION"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "HZ_BUILD_SHARED_LIB"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "HZ_ENABLE_ASSERTS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "HZ_PLATFORM"
+				},
+				{
+					"define" : "Hazel_EXPORTS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "_GLFW_COCOA"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/spdlog/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/chernoGLFW"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/ImGui/include/ImGui"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/src"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/src/Hazel"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/ImGui/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/Glad/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					11
+				],
+				"standard" : "11"
+			},
+			"precompileHeaders" : 
+			[
+				{
+					"backtrace" : 10,
+					"header" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/src/hzpch.h"
+				}
+			],
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 5,
+			"id" : "Glad::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "ImGui::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "Hazel::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-stdlib=libc++",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-L/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/chernoGLFW/GLFW",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-L/Users/sunjunyi/CLionProjects/LiteGine-dev/build/macosx/arm64/release",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/Users/sunjunyi/CLionProjects/LiteGine-dev/Hazel/vendor/chernoGLFW/GLFW -Wl,-rpath,/Users/sunjunyi/CLionProjects/LiteGine-dev/build/macosx/arm64/release",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lglfw3",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/build/macosx/arm64/release/libImGui.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/Users/sunjunyi/CLionProjects/LiteGine-dev/build/macosx/arm64/release/libGlad.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-framework OpenGL",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-framework Cocoa",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-framework IOKit",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-framework CoreVideo",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-framework CoreFoundation",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lz",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "Hazel",
+	"nameOnDisk" : "libHazel.dylib",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
+			]
+		},
+		{
+			"name" : "Precompile Header File",
+			"sourceIndexes" : 
+			[
+				12
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/CMakeFiles/Hazel.dir/cmake_pch_arm64.hxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/hzpch.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Platform/ImGuiBackend/imgui_impl_opengl3.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Platform/ImGuiBackend/imgui_impl_glfw.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Platform/MacOS/MacInput.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Platform/MacOS/MacWindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Hazel/Log.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Hazel/Window.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Hazel/ImGui/ImGuiLayer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Hazel/Layer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Hazel/LayerStack.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 12,
+			"compileGroupIndex" : 1,
+			"path" : "Hazel/src/Hazel/Application.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"path" : "cmake-build-debug/CMakeFiles/Hazel.dir/cmake_pch_arm64.hxx",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}
