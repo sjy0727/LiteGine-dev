@@ -124,7 +124,7 @@ namespace Hazel
 
     void ImGuiLayer::OnEvent(Event& event)
     {
-        HZ_CORE_TRACE(event);
+//        HZ_CORE_TRACE(event);
 
         EventDispatcher dispatcher(event);
 
