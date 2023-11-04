@@ -1,6 +1,0 @@
-/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/Glad.dir
-/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/Hazel.dir
-/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/ImGui.dir
-/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/LiteGine.dir
-/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/sunjunyi/CLionProjects/LiteGine-dev/cmake-build-debug/CMakeFiles/rebuild_cache.dir
