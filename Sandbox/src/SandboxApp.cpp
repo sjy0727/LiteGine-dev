@@ -36,7 +36,7 @@ public:
         PushLayer(new ExampleLayer());
         PushLayer(new Hazel::ImGuiLayer);
     }
-    ~Sandbox() = default;
+    ~Sandbox() override = default;
 };
 
 Hazel::Application* Hazel::CreateApplication() { return new Sandbox(); }

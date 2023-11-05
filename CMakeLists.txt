@@ -120,6 +120,7 @@ target_sources(Hazel PRIVATE
     Hazel/src/Hazel/Layer.cpp
     Hazel/src/Hazel/LayerStack.cpp
     Hazel/src/Hazel/Application.cpp
+    Hazel/src/Hazel/Editor/Editor.cpp
 )
 
 # target

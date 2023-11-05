@@ -6,6 +6,8 @@
 #include "Platform/ImGuiBackend/imgui_impl_glfw.h"
 #include "Platform/ImGuiBackend/imgui_impl_opengl3.h"
 
+#include "Editor/Editor.h"
+
 // FIXME: 暂时存放
 #include "GLFW/glfw3.h"
 #include "glad/glad.h"
@@ -15,7 +17,7 @@ namespace Hazel
 
     ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") {}
 
-    ImGuiLayer::~ImGuiLayer() {}
+    ImGuiLayer::~ImGuiLayer() = default;
 
     void ImGuiLayer::OnAttach()
     {
@@ -74,7 +76,7 @@ namespace Hazel
 
         GLFWwindow* backup_current_context = glfwGetCurrentContext();
         // TODO: install_callbacks
-        ImGui_ImplGlfw_InitForOpenGL(backup_current_context, false);
+        ImGui_ImplGlfw_InitForOpenGL(backup_current_context, true);
         const char* glsl_version = "#version 410";
         ImGui_ImplOpenGL3_Init(glsl_version);
     }
@@ -102,8 +104,13 @@ namespace Hazel
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        // TODO: ImGui Editor代码入口
         static bool show = true;
-        ImGui::ShowDemoWindow(&show);
+//        ImGui::ShowDemoWindow(&show);
+//        Editor::Get()->ShowFPSOverLay(show);
+        Editor::Get()->ShowImGuizmo();
+
+
 
         ImGui::Render();
         // BUG: test add
@@ -115,7 +122,7 @@ namespace Hazel
 
         if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
         {
-            GLFWwindow* backup_current_context = glfwGetCurrentContext();
+//            GLFWwindow* backup_current_context = glfwGetCurrentContext();
             ImGui::UpdatePlatformWindows();
             ImGui::RenderPlatformWindowsDefault();
             glfwMakeContextCurrent(backup_current_context);
@@ -175,27 +182,24 @@ namespace Hazel
 
     bool ImGuiLayer::OnKeyPressedEvent(KeyPressedEvent& e)
     {
-        // HZ_TRACE("{0}", e);
-        // ImGuiIO& io                 = ImGui::GetIO();
         // extern ImGuiKey ImGui_ImplGlfw_KeyToImGuiKey(int key);
         // ImGuiKey keycode = e.GetKeyCode();
         // io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode()), true);
+
+        // io.AddKeyEvent(ImGuiKey key, bool down);
+        // io.AddKeyEvent(ImGuiKey key, bool down);
+        // io.AddKeyEvent(ImGuiKey key, bool down);
+        // io.AddKeyEvent(ImGuiKey key, bool down);
+
+        // HZ_TRACE("{0}", e);
+        // ImGuiIO& io                 = ImGui::GetIO();
         // io.KeysDown[e.GetKeyCode()] = true;
 
-        // io.AddKeyEvent(ImGuiKey key, bool down);
-        // io.AddKeyEvent(ImGuiKey key, bool down);
-        // io.AddKeyEvent(ImGuiKey key, bool down);
-        // io.AddKeyEvent(ImGuiKey key, bool down);
-
         // io.KeyCtrl  = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
         // io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
         // io.KeyAlt   = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
         // io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
 
-        // io.KeyCtrl  = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-        // io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-        // io.KeyAlt   = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
-        // io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
         return false;
     }
 
