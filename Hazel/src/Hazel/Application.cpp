@@ -20,11 +20,12 @@ namespace Hazel
         m_Window = std::unique_ptr<Window>(Window::Create());
         m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-        // unsigned int id;
-        // glGenVertexArrays(1, &id);
+        // application是单例的所以不用担心 ImGuiLayer 内存泄漏
+        m_ImGuiLayer = new ImGuiLayer();
+        PushOverlay(m_ImGuiLayer);
     }
 
-    Application::~Application() {}
+    Application::~Application() { delete m_ImGuiLayer; }
 
     void Application::PushLayer(Layer* layer)
     {
@@ -69,8 +70,16 @@ namespace Hazel
             }
 
             // 全局监听
-//            auto xy = Input::GetMousePosition();
-//            HZ_CORE_TRACE("{0}, {1}", xy.first, xy.second);
+            //            auto xy = Input::GetMousePosition();
+            //            HZ_CORE_TRACE("{0}, {1}", xy.first, xy.second);
+
+            // 渲染ImGui部分
+            m_ImGuiLayer->Begin();
+            for (auto layer : m_LayerStack)
+            {
+                layer->OnImGuiRender();
+            }
+            m_ImGuiLayer->End();
 
             m_Window->OnUpdate();
         }

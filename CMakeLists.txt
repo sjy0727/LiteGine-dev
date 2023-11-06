@@ -19,7 +19,6 @@ target_include_directories(Glad PRIVATE
 )
 target_compile_definitions(Glad PRIVATE
     HZ_PLATFORM
-    HZ_BUILD_SHARED_LIB
     HZ_ENABLE_ASSERTS
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
@@ -51,9 +50,9 @@ target_sources(Glad PRIVATE
 )
 
 # target
-add_library(Hazel SHARED "")
+add_library(Hazel STATIC "")
 set_target_properties(Hazel PROPERTIES OUTPUT_NAME "Hazel")
-set_target_properties(Hazel PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
+set_target_properties(Hazel PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
 add_dependencies(Hazel Glad ImGui)
 target_precompile_headers(Hazel PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/Hazel/src/hzpch.h>
@@ -65,11 +64,11 @@ target_include_directories(Hazel PRIVATE
     Hazel/src
     Hazel/src/Hazel
     Hazel/vendor/ImGui/include
+    Hazel/vendor/glm
     Hazel/vendor/Glad/include
 )
 target_compile_definitions(Hazel PRIVATE
     HZ_PLATFORM
-    HZ_BUILD_SHARED_LIB
     HZ_ENABLE_ASSERTS
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
@@ -80,11 +79,15 @@ target_compile_options(Hazel PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
 )
 set_target_properties(Hazel PROPERTIES CXX_EXTENSIONS OFF)
-target_compile_features(Hazel PRIVATE cxx_std_11)
+target_compile_features(Hazel PRIVATE cxx_std_17)
 if(MSVC)
     target_compile_options(Hazel PRIVATE $<$<CONFIG:Release>:-Ox -fp:fast>)
 else()
     target_compile_options(Hazel PRIVATE -O3)
+endif()
+if(MSVC)
+else()
+    target_compile_options(Hazel PRIVATE -fvisibility=hidden)
 endif()
 if(MSVC)
     set_property(TARGET Hazel PROPERTY
@@ -104,9 +107,6 @@ target_link_libraries(Hazel PRIVATE
 target_link_directories(Hazel PRIVATE
     Hazel/vendor/chernoGLFW/GLFW
     build/macosx/arm64/release
-)
-target_link_options(Hazel PRIVATE
-    -stdlib=libc++
 )
 target_sources(Hazel PRIVATE
     Hazel/src/hzpch.cpp
@@ -134,7 +134,6 @@ target_include_directories(ImGui PRIVATE
 )
 target_compile_definitions(ImGui PRIVATE
     HZ_PLATFORM
-    HZ_BUILD_SHARED_LIB
     HZ_ENABLE_ASSERTS
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
@@ -170,8 +169,10 @@ target_sources(ImGui PRIVATE
     Hazel/vendor/ImGui/include/ImGui/imgui_widgets.cpp
     Hazel/vendor/ImGui/include/ImGui/TextEditor.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui.cpp
+    Hazel/vendor/ImGui/include/ImGui/imgui_impl_opengl3.cpp
     Hazel/vendor/ImGui/include/ImGui/ImGuizmo.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_tables.cpp
+    Hazel/vendor/ImGui/include/ImGui/imgui_impl_glfw.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_demo.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_draw.cpp
 )
@@ -186,10 +187,11 @@ target_include_directories(LiteGine PRIVATE
     Hazel/vendor/chernoGLFW
     Hazel/vendor/ImGui/include/ImGui
     Hazel/src
+    Hazel/vendor/glm
+    Hazel/vendor/ImGui/include
 )
 target_compile_definitions(LiteGine PRIVATE
     HZ_PLATFORM
-    HZ_BUILD_SHARED_LIB
     HZ_ENABLE_ASSERTS
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
@@ -199,7 +201,7 @@ target_compile_options(LiteGine PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
 )
 set_target_properties(LiteGine PROPERTIES CXX_EXTENSIONS OFF)
-target_compile_features(LiteGine PRIVATE cxx_std_11)
+target_compile_features(LiteGine PRIVATE cxx_std_17)
 if(MSVC)
     target_compile_options(LiteGine PRIVATE $<$<CONFIG:Release>:-Ox -fp:fast>)
 else()
@@ -215,6 +217,7 @@ if(MSVC)
 endif()
 target_link_libraries(LiteGine PRIVATE
     Hazel
+    glfw3
     ImGui
     Glad
     "-framework OpenGL"
@@ -225,6 +228,7 @@ target_link_libraries(LiteGine PRIVATE
     z
 )
 target_link_directories(LiteGine PRIVATE
+    Hazel/vendor/chernoGLFW/GLFW
     build/macosx/arm64/release
 )
 target_link_options(LiteGine PRIVATE

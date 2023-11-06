@@ -1,10 +1,10 @@
 add_rules("mode.debug", "mode.release")
 -- 设置c++11标准
-set_languages("cxx11")
+set_languages("cxx17")
 
 -- 设置预定义宏
 add_defines("HZ_PLATFORM")
-add_defines("HZ_BUILD_SHARED_LIB")
+-- add_defines("HZ_BUILD_SHARED_LIB")
 add_defines("HZ_ENABLE_ASSERTS")
 -- 设置不显示GLFW warning
 add_defines("GL_SILENCE_DEPRECATION")
@@ -43,7 +43,8 @@ target("Hazel", function()
     set_pcxxheader("Hazel/src/hzpch.h")
 
     -- 编译为动态链接库
-    set_kind("shared")
+--     set_kind("shared")
+    set_kind("static")
 
     -- 递归编译文件夹下面的所有cpp文件
     add_files("Hazel/src/**.cpp")
@@ -51,6 +52,7 @@ target("Hazel", function()
     add_includedirs("Hazel/src")
     add_includedirs("Hazel/src/Hazel")
     add_includedirs("Hazel/vendor/ImGui/include")
+    add_includedirs("Hazel/vendor/glm")
     add_includedirs("Hazel/vendor/Glad/include")
     add_includedirs("Hazel/vendor/ImGui/include/ImGui")
 
@@ -74,17 +76,22 @@ target("Hazel", function()
     add_defines("_GLFW_COCOA")
     -- add_defines("_GLFW_USE_CONFIG_H")
     add_frameworks("OpenGL", "Cocoa", "IOKit", "CoreVideo", "CoreFoundation")
-    end)
+end)
 
 
-target("LiteGine")
+target("LiteGine", function()
     -- 编译为二进制可执行文件
     set_kind("binary")
     add_files("Sandbox/src/*.cpp")
 
     -- 链接动态链接库
+--     add_deps("ImGui")
     add_deps("Hazel")
     add_includedirs("Hazel/src")
+    add_includedirs("Hazel/vendor/glm")
+    add_includedirs("Hazel/vendor/ImGui/include")
+end)
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

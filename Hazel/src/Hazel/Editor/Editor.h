@@ -19,7 +19,7 @@ namespace Hazel
         void                  ShowFPS();
         void                  ShowFPSOverLay(bool& open);
         inline static Editor* Get() { return new Editor(); }
-        void  ShowImGuizmo();
+        void                  ShowImGuizmo();
         void  EditTransform(float* cameraView, float* cameraProjection, float* matrix, bool editTransformDecomposition);
         void  Perspective(float fovyInDegrees, float aspectRatio, float znear, float zfar, float* m16);
         void  OrthoGraphic(const float l, float r, float b, const float t, float zn, const float zf, float* m16);

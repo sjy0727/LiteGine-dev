@@ -1,4 +1,6 @@
 #include <Hazel.h>
+#include "ImGui/imgui.h"
+#include "Hazel/Editor/Editor.h"
 
 class ExampleLayer : public Hazel::Layer
 {
@@ -12,6 +14,13 @@ public:
         {
             HZ_TRACE("Tab key is pressed (epoll)!");
         }
+    }
+
+    void OnImGuiRender() override
+    {
+        static bool show = true;
+        ImGui::ShowDemoWindow(&show);
+        Hazel::Editor::Get()->ShowImGuizmo();
     }
 
     void OnEvent(Hazel::Event& event) override
@@ -34,7 +43,9 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
-        PushLayer(new Hazel::ImGuiLayer);
+
+        //在 Application中已经实例化过ImGuiLayer了
+//        PushLayer(new Hazel::ImGuiLayer);
     }
     ~Sandbox() override = default;
 };
