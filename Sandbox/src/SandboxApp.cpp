@@ -19,8 +19,8 @@ public:
     void OnImGuiRender() override
     {
         static bool show = true;
-        ImGui::ShowDemoWindow(&show);
         Hazel::Editor::Get()->ShowImGuizmo();
+        ImGui::ShowDemoWindow(&show);
     }
 
     void OnEvent(Hazel::Event& event) override

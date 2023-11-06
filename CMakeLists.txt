@@ -23,21 +23,8 @@ target_compile_definitions(Glad PRIVATE
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
 )
-target_compile_options(Glad PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-)
 set_target_properties(Glad PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Glad PRIVATE c_std_11)
-if(MSVC)
-    target_compile_options(Glad PRIVATE $<$<CONFIG:Release>:-Ox -fp:fast>)
-else()
-    target_compile_options(Glad PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(Glad PRIVATE -fvisibility=hidden)
-endif()
 if(MSVC)
     set_property(TARGET Glad PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -74,21 +61,8 @@ target_compile_definitions(Hazel PRIVATE
     GLFW_INCLUDE_NONE
     _GLFW_COCOA
 )
-target_compile_options(Hazel PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-)
 set_target_properties(Hazel PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Hazel PRIVATE cxx_std_17)
-if(MSVC)
-    target_compile_options(Hazel PRIVATE $<$<CONFIG:Release>:-Ox -fp:fast>)
-else()
-    target_compile_options(Hazel PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(Hazel PRIVATE -fvisibility=hidden)
-endif()
 if(MSVC)
     set_property(TARGET Hazel PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -138,21 +112,8 @@ target_compile_definitions(ImGui PRIVATE
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
 )
-target_compile_options(ImGui PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-)
 set_target_properties(ImGui PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(ImGui PRIVATE cxx_std_11)
-if(MSVC)
-    target_compile_options(ImGui PRIVATE $<$<CONFIG:Release>:-Ox -fp:fast>)
-else()
-    target_compile_options(ImGui PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(ImGui PRIVATE -fvisibility=hidden)
-endif()
 if(MSVC)
     set_property(TARGET ImGui PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -169,10 +130,8 @@ target_sources(ImGui PRIVATE
     Hazel/vendor/ImGui/include/ImGui/imgui_widgets.cpp
     Hazel/vendor/ImGui/include/ImGui/TextEditor.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui.cpp
-    Hazel/vendor/ImGui/include/ImGui/imgui_impl_opengl3.cpp
     Hazel/vendor/ImGui/include/ImGui/ImGuizmo.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_tables.cpp
-    Hazel/vendor/ImGui/include/ImGui/imgui_impl_glfw.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_demo.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_draw.cpp
 )
@@ -196,21 +155,8 @@ target_compile_definitions(LiteGine PRIVATE
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
 )
-target_compile_options(LiteGine PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-)
 set_target_properties(LiteGine PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(LiteGine PRIVATE cxx_std_17)
-if(MSVC)
-    target_compile_options(LiteGine PRIVATE $<$<CONFIG:Release>:-Ox -fp:fast>)
-else()
-    target_compile_options(LiteGine PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(LiteGine PRIVATE -fvisibility=hidden)
-endif()
 if(MSVC)
     set_property(TARGET LiteGine PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")

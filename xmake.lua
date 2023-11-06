@@ -1,4 +1,5 @@
-add_rules("mode.debug", "mode.release")
+-- add_rules("mode.debug", "mode.release")
+add_rules("mode.debug")
 -- 设置c++11标准
 set_languages("cxx17")
 

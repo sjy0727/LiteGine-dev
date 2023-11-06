@@ -3,10 +3,10 @@
 #include "hzpch.h"
 
 #include "ImGui/imgui.h"
-#include "ImGui/imgui_impl_glfw.h"
-#include "ImGui/imgui_impl_opengl3.h"
-//#include "Platform/ImGuiBackend/imgui_impl_glfw.h"
-//#include "Platform/ImGuiBackend/imgui_impl_opengl3.h"
+//#include "ImGui/imgui_impl_glfw.h"
+//#include "ImGui/imgui_impl_opengl3.h"
+#include "Platform/ImGuiBackend/imgui_impl_glfw.h"
+#include "Platform/ImGuiBackend/imgui_impl_opengl3.h"
 
 
 #include "Editor/Editor.h"
