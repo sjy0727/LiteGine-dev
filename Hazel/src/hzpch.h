@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "Hazel/Log.h"
+#include "Hazel/Profiler.h"
 
 #ifdef HZ_PLATFORM
 // #include <Windows.h>

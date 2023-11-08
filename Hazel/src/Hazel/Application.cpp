@@ -61,27 +61,37 @@ namespace Hazel
     {
         while (m_Running)
         {
+            g_profiler.Frame();
+            g_profiler.Begin(Profiler::Stage::Plot);
             glClearColor(0.2, 0.2, 0.2, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            g_profiler.Begin(Profiler::Stage::LayersOnUpdate);
             for (auto layer : m_LayerStack)
             {
                 layer->OnUpdate();
             }
+            g_profiler.End(Profiler::Stage::LayersOnUpdate);
 
             // 全局监听
             //            auto xy = Input::GetMousePosition();
             //            HZ_CORE_TRACE("{0}, {1}", xy.first, xy.second);
 
             // 渲染ImGui部分
+            g_profiler.Begin(Profiler::Stage::LayersOnImGui);
             m_ImGuiLayer->Begin();
             for (auto layer : m_LayerStack)
             {
                 layer->OnImGuiRender();
             }
             m_ImGuiLayer->End();
+            g_profiler.End(Profiler::Stage::LayersOnImGui);
 
+            g_profiler.Begin(Profiler::Stage::WindowOnUpdate);
             m_Window->OnUpdate();
+            g_profiler.End(Profiler::Stage::WindowOnUpdate);
+
+            g_profiler.End(Profiler::Stage::Plot);
         }
     }
 

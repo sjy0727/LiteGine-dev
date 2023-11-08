@@ -23,6 +23,10 @@ target_compile_definitions(Glad PRIVATE
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
 )
+target_compile_options(Glad PRIVATE
+    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+)
 set_target_properties(Glad PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Glad PRIVATE c_std_11)
 if(MSVC)
@@ -61,6 +65,10 @@ target_compile_definitions(Hazel PRIVATE
     GLFW_INCLUDE_NONE
     _GLFW_COCOA
 )
+target_compile_options(Hazel PRIVATE
+    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+)
 set_target_properties(Hazel PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Hazel PRIVATE cxx_std_17)
 if(MSVC)
@@ -88,6 +96,7 @@ target_sources(Hazel PRIVATE
     Hazel/src/Platform/ImGuiBackend/imgui_impl_glfw.cpp
     Hazel/src/Platform/MacOS/MacInput.cpp
     Hazel/src/Platform/MacOS/MacWindow.cpp
+    Hazel/src/Platform/OpenGL/OpenGLContext.cpp
     Hazel/src/Hazel/Log.cpp
     Hazel/src/Hazel/Window.cpp
     Hazel/src/Hazel/ImGui/ImGuiLayer.cpp
@@ -112,6 +121,10 @@ target_compile_definitions(ImGui PRIVATE
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
 )
+target_compile_options(ImGui PRIVATE
+    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+)
 set_target_properties(ImGui PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(ImGui PRIVATE cxx_std_11)
 if(MSVC)
@@ -129,6 +142,7 @@ target_link_libraries(ImGui PRIVATE
 target_sources(ImGui PRIVATE
     Hazel/vendor/ImGui/include/ImGui/imgui_widgets.cpp
     Hazel/vendor/ImGui/include/ImGui/TextEditor.cpp
+    Hazel/vendor/ImGui/include/ImGui/imgui_widget_flamegraph.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui.cpp
     Hazel/vendor/ImGui/include/ImGui/ImGuizmo.cpp
     Hazel/vendor/ImGui/include/ImGui/imgui_tables.cpp
@@ -154,6 +168,10 @@ target_compile_definitions(LiteGine PRIVATE
     HZ_ENABLE_ASSERTS
     GL_SILENCE_DEPRECATION
     GLFW_INCLUDE_NONE
+)
+target_compile_options(LiteGine PRIVATE
+    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
 )
 set_target_properties(LiteGine PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(LiteGine PRIVATE cxx_std_17)

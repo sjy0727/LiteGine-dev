@@ -1,4 +1,5 @@
 #include "Editor.h"
+#include "ImGui/L2DFileDialog.h"
 
 namespace Hazel
 {
@@ -260,7 +261,6 @@ namespace Hazel
             if (ImGui::IsKeyDown(ImGuiKey_T))
                 mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
 
-
             if (ImGui::IsKeyDown(ImGuiKey_E))
                 mCurrentGizmoOperation = ImGuizmo::ROTATE;
 
@@ -512,4 +512,29 @@ namespace Hazel
         r[2]     = a[2] * il;
     }
 
+    char* Editor::ShowFileDialog()
+    {
+        if (ImGui::Begin("File dialog"))
+        {
+            ImGui::TextUnformatted("Path: ");
+            ImGui::InputText("##path", path, sizeof(path));
+            ImGui::SameLine();
+            if (ImGui::Button("Browse##path"))
+            {
+                file_dialog_buffer           = path;
+                FileDialog::file_dialog_open = true;
+                //            FileDialog::file_dialog_open_type = FileDialog::FileDialogType::SelectFolder;
+                FileDialog::file_dialog_open_type = FileDialog::FileDialogType::OpenFile;
+            }
+
+            if (FileDialog::file_dialog_open)
+            {
+                FileDialog::ShowFileDialog(&FileDialog::file_dialog_open,
+                                           file_dialog_buffer,
+                                           sizeof(file_dialog_buffer),
+                                           FileDialog::file_dialog_open_type);
+            }
+            ImGui::End();
+        }
+    }
 } // namespace Hazel

@@ -105,9 +105,11 @@ namespace Hazel
 
     void ImGuiLayer::Begin()
     {
+        g_profiler.Begin(Hazel::Profiler::Stage::NewFrame);
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+        g_profiler.End(Hazel::Profiler::Stage::NewFrame);
     }
     void ImGuiLayer::End()
     {
@@ -115,13 +117,17 @@ namespace Hazel
         Application& app = Application::Get();
         io.DisplaySize   = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
+        g_profiler.Begin(Profiler::Stage::Rendering);
         ImGui::Render();
         // FIXME: 修正
         GLFWwindow* backup_current_context = glfwGetCurrentContext();
         int         display_w, display_h;
         glfwGetFramebufferSize(backup_current_context, &display_w, &display_h);
         glViewport(0, 0, display_w, display_h);
+        g_profiler.Begin(Profiler::Stage::ImGuiRenderOpenGL);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        g_profiler.End(Profiler::Stage::ImGuiRenderOpenGL);
+
 
         if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
         {
@@ -130,13 +136,30 @@ namespace Hazel
             ImGui::RenderPlatformWindowsDefault();
             glfwMakeContextCurrent(backup_current_context);
         }
+        g_profiler.End(Profiler::Stage::Rendering);
+
     }
 
     void ImGuiLayer::OnImGuiRender()
     {
 //        static bool show = true;
+//        g_profiler.Begin(Hazel::Profiler::Stage::ImGuizmo);
+//        Hazel::Editor::Get()->ShowImGuizmo();
+//        g_profiler.End(Hazel::Profiler::Stage::ImGuizmo);
+//
+//        g_profiler.Begin(Hazel::Profiler::Stage::FileDialog);
+//        Hazel::Editor::Get()->ShowFileDialog();
+//        g_profiler.End(Hazel::Profiler::Stage::FileDialog);
+//
+//        g_profiler.Begin(Hazel::Profiler::Stage::DemoWindow);
 //        ImGui::ShowDemoWindow(&show);
-//        Editor::Get()->ShowImGuizmo();
+//        g_profiler.End(Hazel::Profiler::Stage::DemoWindow);
+//
+//        // FIXME: FlameGraph只能在OnImGuiRender中 性能分析点可以在循环中任意点
+//        ImGui::Begin("Profiler Window", &show);
+//        auto& entry = g_profiler._entries[g_profiler.GetCurrentEntryIndex()];
+//        ImGuiWidgetFlameGraph::PlotFlame("CPU", &ProfilerValueGetter, &entry, g_profiler._StageCount, 0, "Main Thread", FLT_MAX, FLT_MAX, ImVec2(400, 0));
+//        ImGui::End();
     }
 
 

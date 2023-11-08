@@ -1,7 +1,10 @@
 -- add_rules("mode.debug", "mode.release")
 add_rules("mode.debug")
 -- 设置c++11标准
-set_languages("cxx17")
+set_languages("cxx17") -- c++14支持的make_unique 以及 filedialog里c++17支持的filesystem
+
+-- 定义 _CRT_SECURE_NO_WARNINGS 宏以取消 strcpy 报错
+add_cxflags("-D_CRT_SECURE_NO_WARNINGS")
 
 -- 设置预定义宏
 add_defines("HZ_PLATFORM")
