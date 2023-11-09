@@ -96,7 +96,11 @@ target_sources(Hazel PRIVATE
     Hazel/src/Platform/ImGuiBackend/imgui_impl_glfw.cpp
     Hazel/src/Platform/MacOS/MacInput.cpp
     Hazel/src/Platform/MacOS/MacWindow.cpp
+    Hazel/src/Platform/OpenGL/OpenGLBuffer.cpp
     Hazel/src/Platform/OpenGL/OpenGLContext.cpp
+    Hazel/src/Hazel/Renderer/Shader.cpp
+    Hazel/src/Hazel/Renderer/Buffer.cpp
+    Hazel/src/Hazel/Renderer/Renderer.cpp
     Hazel/src/Hazel/Log.cpp
     Hazel/src/Hazel/Window.cpp
     Hazel/src/Hazel/ImGui/ImGuiLayer.cpp
