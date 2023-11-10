@@ -16,17 +16,28 @@ namespace Hazel
     {
         switch (type)
         {
-            case Hazel::ShaderDataType::Float:    return GL_FLOAT;
-            case Hazel::ShaderDataType::Float2:   return GL_FLOAT;
-            case Hazel::ShaderDataType::Float3:   return GL_FLOAT;
-            case Hazel::ShaderDataType::Float4:   return GL_FLOAT;
-            case Hazel::ShaderDataType::Mat3:     return GL_FLOAT;
-            case Hazel::ShaderDataType::Mat4:     return GL_FLOAT;
-            case Hazel::ShaderDataType::Int:      return GL_INT;
-            case Hazel::ShaderDataType::Int2:     return GL_INT;
-            case Hazel::ShaderDataType::Int3:     return GL_INT;
-            case Hazel::ShaderDataType::Int4:     return GL_INT;
-            case Hazel::ShaderDataType::Bool:     return GL_BOOL;
+            case Hazel::ShaderDataType::Float:
+                return GL_FLOAT;
+            case Hazel::ShaderDataType::Float2:
+                return GL_FLOAT;
+            case Hazel::ShaderDataType::Float3:
+                return GL_FLOAT;
+            case Hazel::ShaderDataType::Float4:
+                return GL_FLOAT;
+            case Hazel::ShaderDataType::Mat3:
+                return GL_FLOAT;
+            case Hazel::ShaderDataType::Mat4:
+                return GL_FLOAT;
+            case Hazel::ShaderDataType::Int:
+                return GL_INT;
+            case Hazel::ShaderDataType::Int2:
+                return GL_INT;
+            case Hazel::ShaderDataType::Int3:
+                return GL_INT;
+            case Hazel::ShaderDataType::Int4:
+                return GL_INT;
+            case Hazel::ShaderDataType::Bool:
+                return GL_BOOL;
         }
 
         HZ_CORE_ASSERT(false, "Unknown ShaderDataType!");
@@ -48,24 +59,18 @@ namespace Hazel
         glGenVertexArrays(1, &m_VertexArray);
         glBindVertexArray(m_VertexArray);
 
-        float vertices[3 * 7] = {
-            -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-            0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
-            0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
-        };
+        float vertices[3 * 7] = {-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.5f, -0.5f, 0.0f, 0.2f,
+                                 0.3f,  0.8f,  1.0f, 0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f,  1.0f};
 
         m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
         {
-            BufferLayout layout = {
-                { ShaderDataType::Float3, "a_Position" },
-                { ShaderDataType::Float4, "a_Color" }
-            };
+            BufferLayout layout = {{ShaderDataType::Float3, "a_Position"}, {ShaderDataType::Float4, "a_Color"}};
 
             m_VertexBuffer->SetLayout(layout);
         }
 
-        uint32_t index = 0;
+        uint32_t    index  = 0;
         const auto& layout = m_VertexBuffer->GetLayout();
         for (const auto& element : layout)
         {
@@ -75,11 +80,11 @@ namespace Hazel
                                   ShaderDataTypeToOpenGLBaseType(element.Type),
                                   element.Normalized ? GL_TRUE : GL_FALSE,
                                   layout.GetStride(),
-                                  (const void*)element.Offset);
+                                  reinterpret_cast<const void*>(element.Offset));
             index++;
         }
 
-        uint32_t indices[3] = { 0, 1, 2 };
+        uint32_t indices[3] = {0, 1, 2};
         m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
         std::string vertexSrc = R"(

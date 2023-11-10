@@ -22,6 +22,8 @@ namespace Hazel
     {
         switch (type)
         {
+            case ShaderDataType::None:
+                return 0;
             case ShaderDataType::Float:
                 return 4;
             case ShaderDataType::Float2:
@@ -68,6 +70,8 @@ namespace Hazel
         {
             switch (Type)
             {
+                case ShaderDataType::None:
+                    return 0;
                 case ShaderDataType::Float:
                     return 1;
                 case ShaderDataType::Float2:

@@ -26,6 +26,8 @@ target_compile_definitions(Glad PRIVATE
 target_compile_options(Glad PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
     $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(Glad PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Glad PRIVATE c_std_11)
@@ -68,6 +70,8 @@ target_compile_definitions(Hazel PRIVATE
 target_compile_options(Hazel PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
     $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(Hazel PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Hazel PRIVATE cxx_std_17)
@@ -128,6 +132,8 @@ target_compile_definitions(ImGui PRIVATE
 target_compile_options(ImGui PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
     $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(ImGui PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(ImGui PRIVATE cxx_std_11)
@@ -176,6 +182,8 @@ target_compile_definitions(LiteGine PRIVATE
 target_compile_options(LiteGine PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
     $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
+    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(LiteGine PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(LiteGine PRIVATE cxx_std_17)

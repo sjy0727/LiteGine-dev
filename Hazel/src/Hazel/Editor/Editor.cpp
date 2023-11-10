@@ -536,5 +536,6 @@ namespace Hazel
             }
             ImGui::End();
         }
+        return file_dialog_buffer;
     }
 } // namespace Hazel
