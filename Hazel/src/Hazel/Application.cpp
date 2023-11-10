@@ -122,7 +122,7 @@ namespace Hazel
         m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
     }
 
-    Application::~Application() { delete m_ImGuiLayer; }
+    Application::~Application() {}
 
     void Application::PushLayer(Layer* layer)
     {
