@@ -12,22 +12,11 @@ add_library(Glad STATIC "")
 set_target_properties(Glad PROPERTIES OUTPUT_NAME "Glad")
 set_target_properties(Glad PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
 target_include_directories(Glad PRIVATE
-    Hazel/vendor/spdlog/include
-    Hazel/vendor/chernoGLFW
-    Hazel/vendor/ImGui/include/ImGui
     Hazel/vendor/Glad/include
 )
 target_compile_definitions(Glad PRIVATE
     HZ_PLATFORM
     HZ_ENABLE_ASSERTS
-    GL_SILENCE_DEPRECATION
-    GLFW_INCLUDE_NONE
-)
-target_compile_options(Glad PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
-    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
-    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
-    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(Glad PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(Glad PRIVATE c_std_11)
@@ -46,19 +35,19 @@ target_sources(Glad PRIVATE
 add_library(Hazel STATIC "")
 set_target_properties(Hazel PROPERTIES OUTPUT_NAME "Hazel")
 set_target_properties(Hazel PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
-add_dependencies(Hazel Glad ImGui)
+add_dependencies(Hazel Glad ImGui glfw)
 target_precompile_headers(Hazel PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/Hazel/src/hzpch.h>
 )
 target_include_directories(Hazel PRIVATE
-    Hazel/vendor/spdlog/include
-    Hazel/vendor/chernoGLFW
-    Hazel/vendor/ImGui/include/ImGui
     Hazel/src
     Hazel/src/Hazel
-    Hazel/vendor/ImGui/include
     Hazel/vendor/glm
     Hazel/vendor/Glad/include
+    Hazel/vendor/glfw/include
+    Hazel/vendor/spdlog/include
+    Hazel/vendor/ImGui/include
+    Hazel/vendor/ImGui/include/ImGui
 )
 target_compile_definitions(Hazel PRIVATE
     HZ_PLATFORM
@@ -80,7 +69,7 @@ if(MSVC)
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 target_link_libraries(Hazel PRIVATE
-    glfw3
+    glfw
     ImGui
     Glad
     "-framework OpenGL"
@@ -88,10 +77,10 @@ target_link_libraries(Hazel PRIVATE
     "-framework IOKit"
     "-framework CoreVideo"
     "-framework CoreFoundation"
+    "-framework Foundation"
     z
 )
 target_link_directories(Hazel PRIVATE
-    Hazel/vendor/chernoGLFW/GLFW
     build/macosx/arm64/release
 )
 target_sources(Hazel PRIVATE
@@ -123,22 +112,9 @@ target_sources(Hazel PRIVATE
 add_library(ImGui STATIC "")
 set_target_properties(ImGui PROPERTIES OUTPUT_NAME "ImGui")
 set_target_properties(ImGui PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
-target_include_directories(ImGui PRIVATE
-    Hazel/vendor/spdlog/include
-    Hazel/vendor/chernoGLFW
-    Hazel/vendor/ImGui/include/ImGui
-)
 target_compile_definitions(ImGui PRIVATE
     HZ_PLATFORM
     HZ_ENABLE_ASSERTS
-    GL_SILENCE_DEPRECATION
-    GLFW_INCLUDE_NONE
-)
-target_compile_options(ImGui PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
-    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
-    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
-    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(ImGui PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(ImGui PRIVATE cxx_std_11)
@@ -171,24 +147,16 @@ set_target_properties(LiteGine PROPERTIES OUTPUT_NAME "LiteGine")
 set_target_properties(LiteGine PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
 add_dependencies(LiteGine Hazel)
 target_include_directories(LiteGine PRIVATE
-    Hazel/vendor/spdlog/include
-    Hazel/vendor/chernoGLFW
-    Hazel/vendor/ImGui/include/ImGui
     Hazel/src
     Hazel/vendor/glm
     Hazel/vendor/ImGui/include
+    Hazel/vendor/ImGui/include/ImGui
+    Hazel/vendor/glfw/include
+    Hazel/vendor/spdlog/include
 )
 target_compile_definitions(LiteGine PRIVATE
     HZ_PLATFORM
     HZ_ENABLE_ASSERTS
-    GL_SILENCE_DEPRECATION
-    GLFW_INCLUDE_NONE
-)
-target_compile_options(LiteGine PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-D_CRT_SECURE_NO_WARNINGS>
-    $<$<COMPILE_LANGUAGE:CXX>:-D_CRT_SECURE_NO_WARNINGS>
-    $<$<COMPILE_LANGUAGE:C>:-Wno-switch>
-    $<$<COMPILE_LANGUAGE:CXX>:-Wno-switch>
 )
 set_target_properties(LiteGine PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(LiteGine PRIVATE cxx_std_17)
@@ -198,7 +166,7 @@ if(MSVC)
 endif()
 target_link_libraries(LiteGine PRIVATE
     Hazel
-    glfw3
+    glfw
     ImGui
     Glad
     "-framework OpenGL"
@@ -206,10 +174,10 @@ target_link_libraries(LiteGine PRIVATE
     "-framework IOKit"
     "-framework CoreVideo"
     "-framework CoreFoundation"
+    "-framework Foundation"
     z
 )
 target_link_directories(LiteGine PRIVATE
-    Hazel/vendor/chernoGLFW/GLFW
     build/macosx/arm64/release
 )
 target_link_options(LiteGine PRIVATE
@@ -217,5 +185,54 @@ target_link_options(LiteGine PRIVATE
 )
 target_sources(LiteGine PRIVATE
     Sandbox/src/SandboxApp.cpp
+)
+
+# target
+add_library(glfw STATIC "")
+set_target_properties(glfw PROPERTIES OUTPUT_NAME "glfw")
+set_target_properties(glfw PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/macosx/arm64/release")
+target_compile_definitions(glfw PRIVATE
+    HZ_PLATFORM
+    HZ_ENABLE_ASSERTS
+    _GLFW_COCOA
+)
+if(MSVC)
+    target_compile_options(glfw PRIVATE nil)
+else()
+    target_compile_options(glfw PRIVATE nil)
+endif()
+set_target_properties(glfw PROPERTIES CXX_EXTENSIONS OFF)
+target_compile_features(glfw PRIVATE c_std_11)
+if(MSVC)
+    set_property(TARGET glfw PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+target_link_libraries(glfw PRIVATE
+    "-framework Foundation"
+    "-framework CoreFoundation"
+    z
+)
+target_sources(glfw PRIVATE
+    Hazel/vendor/glfw/src/context.c
+    Hazel/vendor/glfw/src/init.c
+    Hazel/vendor/glfw/src/input.c
+    Hazel/vendor/glfw/src/monitor.c
+    Hazel/vendor/glfw/src/null_init.c
+    Hazel/vendor/glfw/src/null_joystick.c
+    Hazel/vendor/glfw/src/null_monitor.c
+    Hazel/vendor/glfw/src/null_window.c
+    Hazel/vendor/glfw/src/platform.c
+    Hazel/vendor/glfw/src/vulkan.c
+    Hazel/vendor/glfw/src/window.c
+    Hazel/vendor/glfw/src/cocoa_time.c
+    Hazel/vendor/glfw/src/posix_thread.c
+    Hazel/vendor/glfw/src/posix_module.c
+    Hazel/vendor/glfw/src/osmesa_context.c
+    Hazel/vendor/glfw/src/egl_context.c
+    Hazel/vendor/glfw/src/cocoa_init.m
+    Hazel/vendor/glfw/src/cocoa_monitor.m
+    Hazel/vendor/glfw/src/cocoa_window.m
+    Hazel/vendor/glfw/src/cocoa_joystick.m
+    Hazel/vendor/glfw/src/nsgl_context.m
 )
 

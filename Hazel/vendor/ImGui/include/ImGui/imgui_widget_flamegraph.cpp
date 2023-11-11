@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <imgui_widget_flamegraph.h>
+#include "imgui_widget_flamegraph.h"
 
 #include "imgui.h"
 #include "imgui_internal.h"

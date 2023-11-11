@@ -3,44 +3,18 @@ add_rules("mode.debug")
 -- 设置c++11标准
 set_languages("cxx17") -- c++14支持的make_unique 以及 filedialog里c++17支持的filesystem
 
--- 定义 _CRT_SECURE_NO_WARNINGS 宏以取消 strcpy 报错, 取消switch警告
-add_cxflags("-D_CRT_SECURE_NO_WARNINGS", "-Wno-switch")
-
 -- 设置预定义宏
 add_defines("HZ_PLATFORM")
 -- add_defines("HZ_BUILD_SHARED_LIB")
 add_defines("HZ_ENABLE_ASSERTS")
--- 设置不显示GLFW warning
-add_defines("GL_SILENCE_DEPRECATION")
--- 设置包含GLFW时不再包含OpenGL头文件
-add_defines("GLFW_INCLUDE_NONE")
--- 禁止传统IMGUI按键
--- add_defines("IMGUI_DISABLE_OBSOLETE_KEYIO")
 
--- 添加全局包含路径
--- spdlog
-add_includedirs("Hazel/vendor/spdlog/include")
-
+-- 添加模块
 -- glfw
--- add_includedirs("Hazel/vendor/glfw/include")
-add_includedirs("Hazel/vendor/chernoGLFW")
-
+includes("Hazel/vendor/glfw")
 -- glad
 includes("Hazel/vendor/Glad")
-
 -- ImGui
 includes("Hazel/vendor/ImGui")
-add_includedirs("Hazel/vendor/ImGui/include/ImGui")
-
-
-
--- 添加子项目
--- 添加子目录下的xmake项目
--- includes("Hazel/vendor/glfw")
--- 添加子目录下的xmake项目
--- add_subdirs("Hazel/vendor/glfw")
--- 下载需求的包到~/.xmake中
--- add_requires("glfw 3.3.8", {alias = "glfw"})
 
 target("Hazel", function()
     -- 预编译头文件
@@ -50,35 +24,33 @@ target("Hazel", function()
 --     set_kind("shared")
     set_kind("static")
 
-    -- 递归编译文件夹下面的所有cpp文件
-    add_files("Hazel/src/**.cpp")
-
     add_includedirs("Hazel/src")
     add_includedirs("Hazel/src/Hazel")
-    add_includedirs("Hazel/vendor/ImGui/include")
     add_includedirs("Hazel/vendor/glm")
     add_includedirs("Hazel/vendor/Glad/include")
+    add_includedirs("Hazel/vendor/glfw/include")
+    add_includedirs("Hazel/vendor/spdlog/include")
+    add_includedirs("Hazel/vendor/ImGui/include")
     add_includedirs("Hazel/vendor/ImGui/include/ImGui")
+
+    -- 递归编译文件夹下面的所有cpp文件
+    add_files("Hazel/src/**.cpp")
 
     -- 添加Glad依赖
     add_deps("Glad")
     -- 添加Imgui依赖
     add_deps("ImGui")
+    -- 添加glfw依赖
+    add_deps("glfw")
 
-    -- add_includedirs("Hazel/vendor/spdlog/include")
+    -- 定义 _CRT_SECURE_NO_WARNINGS 宏以取消 strcpy 报错, 取消switch警告
+    add_cxflags("-D_CRT_SECURE_NO_WARNINGS", "-Wno-switch")
+    -- 设置不显示GLFW warning
+    add_defines("GL_SILENCE_DEPRECATION")
+    -- 设置包含GLFW时不再包含OpenGL头文件
+    add_defines("GLFW_INCLUDE_NONE")
 
-    -- 链接下载到~/.xmake的静态库
-    -- add_packages("glfw")
-    -- add_deps("glfw")
-
-    -- 链接本地编译项目的静态库
-    -- add_deps("GLFW")
-
-    -- 本地链接静态库
-    add_linkdirs("Hazel/vendor/chernoGLFW/GLFW")
-    add_links("glfw3")
     add_defines("_GLFW_COCOA")
-    -- add_defines("_GLFW_USE_CONFIG_H")
     add_frameworks("OpenGL", "Cocoa", "IOKit", "CoreVideo", "CoreFoundation")
 end)
 
@@ -89,11 +61,13 @@ target("LiteGine", function()
     add_files("Sandbox/src/*.cpp")
 
     -- 链接动态链接库
---     add_deps("ImGui")
     add_deps("Hazel")
     add_includedirs("Hazel/src")
     add_includedirs("Hazel/vendor/glm")
+    add_includedirs("Hazel/vendor/glfw/include")
+    add_includedirs("Hazel/vendor/spdlog/include")
     add_includedirs("Hazel/vendor/ImGui/include")
+    add_includedirs("Hazel/vendor/ImGui/include/ImGui")
 end)
 
 
