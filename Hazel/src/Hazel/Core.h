@@ -1,5 +1,4 @@
 #pragma once
-
 // #ifdef HZ_PLATPORM_WINDOWS
 // #ifdef HZ_BUILD_DLL
 // #define HAZEL_API __declspec(dllexport)

@@ -1,17 +1,11 @@
-#include "hzpch.h"
 #include "Layer.h"
+#include "hzpch.h"
 
-namespace Hazel {
+namespace Hazel
+{
 
-    Layer::Layer(const std::string& name)
-        : m_DebugName(name)
-    {
-        
-    }
+    Layer::Layer(const std::string& name) : m_DebugName(name) {}
 
-    Layer::~Layer()
-    {
-        
-    }
+    Layer::~Layer() = default;
 
-}
+} // namespace Hazel

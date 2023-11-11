@@ -23,7 +23,7 @@ namespace Hazel
     public:
         using EventCallbackFn = std::function<void(Event&)>;
         // FIXME: 析构函数改为纯虚函数
-        virtual ~Window() {}
+        virtual ~Window() = default;
 
         virtual void OnUpdate() = 0;
 

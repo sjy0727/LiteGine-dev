@@ -141,8 +141,7 @@ namespace Hazel
     static float camXAngle     = 32.f / 180.f * 3.14159f;
 
     static bool firstFrame = true;
-
-    static bool  useWindow   = false;
+    static bool  useWindow   = true;
     static int   gizmoCount  = 1;
     static float camDistance = 6.f;
 

@@ -55,6 +55,20 @@ namespace Hazel
         ImGui_ImplGlfw_InitForOpenGL(backup_current_context, true);
         const char* glsl_version = "#version 410";
         ImGui_ImplOpenGL3_Init(glsl_version);
+
+//        const ImWchar my_ranges[]={
+//            0xC8AB,0xC6C1,
+//            0x3000,0x303F,
+//            0xFFFF,0xFFEF,
+//            0
+//        };
+//
+//        ImFontConfig config;
+//        config.MergeMode = false;
+//        config.GlyphRanges = my_ranges;
+//
+//        io.Fonts->AddFontFromFileTTF("zpix.ttf", 12.0f, &config);
+//        io.Fonts->AddFontFromFileTTF("zpix.ttf", 12.0f, nullptr,io.Fonts->GetGlyphRangesChineseFull());
     }
 
     void ImGuiLayer::OnDetach()
