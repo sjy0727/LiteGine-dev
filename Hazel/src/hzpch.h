@@ -16,5 +16,7 @@
 #include "Hazel/Profiler.h"
 
 #ifdef HZ_PLATFORM
-// #include <Windows.h>
+#    if defined(_WIN32)
+#        include <Windows.h>
+#    endif
 #endif
