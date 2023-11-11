@@ -103,9 +103,12 @@ target_sources(Hazel PRIVATE
     Hazel/src/Platform/OpenGL/OpenGLBuffer.cpp
     Hazel/src/Platform/OpenGL/OpenGLContext.cpp
     Hazel/src/Platform/OpenGL/OpenGLVertexArray.cpp
+    Hazel/src/Platform/OpenGL/OpenGLRendererAPI.cpp
     Hazel/src/Hazel/Renderer/VertexArray.cpp
+    Hazel/src/Hazel/Renderer/RenderCommand.cpp
     Hazel/src/Hazel/Renderer/Shader.cpp
     Hazel/src/Hazel/Renderer/Buffer.cpp
+    Hazel/src/Hazel/Renderer/RendererAPI.cpp
     Hazel/src/Hazel/Renderer/Renderer.cpp
     Hazel/src/Hazel/Log.cpp
     Hazel/src/Hazel/Window.cpp

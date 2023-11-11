@@ -60,7 +60,7 @@ class Sandbox : public Hazel::Application
 public:
     Sandbox()
     {
-//        PushLayer(new ExampleLayer());
+        PushLayer(new ExampleLayer());
 
         //在 Application中已经实例化过ImGuiLayer了
 //        PushLayer(new Hazel::ImGuiLayer());
