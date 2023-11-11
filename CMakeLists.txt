@@ -196,11 +196,7 @@ target_compile_definitions(glfw PRIVATE
     HZ_ENABLE_ASSERTS
     _GLFW_COCOA
 )
-if(MSVC)
-    target_compile_options(glfw PRIVATE nil)
-else()
-    target_compile_options(glfw PRIVATE nil)
-endif()
+
 set_target_properties(glfw PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(glfw PRIVATE c_std_11)
 if(MSVC)
