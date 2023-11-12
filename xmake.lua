@@ -50,8 +50,8 @@ target("Hazel", function()
     -- 设置包含GLFW时不再包含OpenGL头文件
     add_defines("GLFW_INCLUDE_NONE")
 
-    add_defines("_GLFW_COCOA")
-    add_frameworks("OpenGL", "Cocoa", "IOKit", "CoreVideo", "CoreFoundation")
+--     add_defines("_GLFW_COCOA")
+--     add_frameworks("OpenGL", "Cocoa", "IOKit", "CoreVideo", "CoreFoundation")
 end)
 
 
