@@ -10,18 +10,18 @@
 // 存放引擎条件编译宏
 
 #ifdef HZ_PLATFORM
-#    ifdef HZ_BUILD_SHARED_LIB
+#    ifdef HZ_DYNAMIC_LINK
 #        if defined(__APPLE__)
 #            define HAZEL_API
 #        elif defined(_WIN32)
-#            define HAZEL_API __declspec(dllexport)
+#            ifdef HZ_BUILD_DLL
+#                define HAZEL_API __declspec(dllexport)
+#            else
+#                define HAZEL_API __declspec(dllimport)
+#            endif
 #        endif
 #    else
-#        if defined(__APPLE__)
-#            define HAZEL_API
-#        elif defined(_WIN32)
-#            define HAZEL_API __declspec(dllimport)
-#        endif
+#        define HAZEL_API
 #    endif
 #endif
 
